@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dapreaagxm11v"]
+
+[ext_resource type="PackedScene" uid="uid://c030tffwgaiul" path="res://player.tscn" id="1_78anx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t5h44"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sqy5h"]
+size = Vector2(10, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3gj82"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
+[node name="World" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61112, 2.4235)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.465043, -0.676389, 0.571168, 0, 0.645178, 0.764033, -0.885288, -0.355308, 0.300035, 0, 5.17381, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36517, -4.95288)
+mesh = SubResource("BoxMesh_t5h44")
+skeleton = NodePath("../DirectionalLight3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_sqy5h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3gj82")
+
+[node name="Player" parent="." instance=ExtResource("1_78anx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06213, -1.78426)

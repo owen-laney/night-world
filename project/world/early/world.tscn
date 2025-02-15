@@ -92,7 +92,7 @@ skeleton = NodePath("../../../Terrain2")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7vfoe")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
 [node name="Enemy" parent="." instance=ExtResource("5_lckeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25319, -7.03793)
+
+[connection signal="nearby" from="Character" to="Enemy" method="_on_character_nearby"]

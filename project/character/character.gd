@@ -7,6 +7,9 @@ var mouse_sensitivity = 0.002  # turning speed
 
 var can_attack = true
 var target_enemy = null
+var enemies_nearby = []
+
+signal nearby(is_nearby: bool)
 
 func get_input():
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -35,7 +38,7 @@ func _unhandled_input(event):
 			print("Player - Attacking nothing")
 
 func _on_hit_box_body_entered(body: CharacterBody3D) -> void:
-	print("Player - Enemy entered attack range")
+	print("Enemy entered attack range")
 	can_attack = true
 	target_enemy = body
 
@@ -44,3 +47,17 @@ func _on_hit_box_body_exited(body: CharacterBody3D) -> void:
 		print("Enemy left attack range")
 		can_attack = false
 		target_enemy = null
+
+
+
+func _on_near_character_body_entered(body: CharacterBody3D) -> void:
+	enemies_nearby.append(body)
+	print("Enemies nearby: " + str(enemies_nearby))
+	nearby.emit(true)
+	
+
+
+func _on_near_character_body_exited(body: Node3D) -> void:
+	enemies_nearby.erase(body)
+	print("Enemies nearby: " + str(enemies_nearby))
+	nearby.emit(false)

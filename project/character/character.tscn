@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ukqdkjrvpo6e"]
+[gd_scene load_steps=7 format=3 uid="uid://ukqdkjrvpo6e"]
 
 [ext_resource type="Script" path="res://project/character/character.gd" id="1_s5b0t"]
 [ext_resource type="ArrayMesh" uid="uid://ucrjvslulx7a" path="res://project/character/sword.obj" id="2_xvo0a"]
@@ -9,6 +9,8 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jnkqe"]
 radius = 1.02352
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lf4st"]
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_s5b0t")
@@ -33,5 +35,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.495108)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.31933)
 shape = SubResource("SphereShape3D_jnkqe")
 
+[node name="NearCharacter" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearCharacter"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("SphereShape3D_lf4st")
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="body_entered" from="NearCharacter" to="." method="_on_near_character_body_entered"]
+[connection signal="body_exited" from="NearCharacter" to="." method="_on_near_character_body_exited"]

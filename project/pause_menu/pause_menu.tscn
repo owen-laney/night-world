@@ -50,7 +50,7 @@ text = "Sleep (toggle day/night)"
 layout_mode = 2
 text = "move: w, a, s, & d
 jump: space
-attack: q"
+attack: left click"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

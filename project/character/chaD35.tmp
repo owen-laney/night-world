@@ -27,11 +27,9 @@ transform = Transform3D(0.97305, -0.185522, 0.136948, 0, 0.593896, 0.804542, -0.
 mesh = ExtResource("2_xvo0a")
 
 [node name="HitBox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.495108)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.31933)
 shape = SubResource("SphereShape3D_jnkqe")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
-[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]

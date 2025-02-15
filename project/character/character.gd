@@ -4,10 +4,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 4.0  # movement speed
 var jump_speed = 6.0  # determines jump height
 var mouse_sensitivity = 0.002  # turning speed
-var mouse_captured = true
-
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+#var mouse_captured = true
+#
+#func _ready():
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func get_input():
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")

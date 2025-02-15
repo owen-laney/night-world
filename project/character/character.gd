@@ -28,17 +28,17 @@ func _unhandled_input(event):
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_speed
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		toggle_mouse_capture()
-
-func toggle_mouse_capture():
-	mouse_captured = !mouse_captured  # Toggle the state
-	if mouse_captured:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Lock the mouse
-		print("Mouse Captured")
-		#get_tree().paused = false
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Release the mouse
-		print("Mouse Released")
-		#get_tree().paused = true
+#func _input(event):
+	#if event.is_action_pressed("ui_cancel"):
+		#toggle_mouse_capture()
+#
+#func toggle_mouse_capture():
+	#mouse_captured = !mouse_captured  # Toggle the state
+	#if mouse_captured:
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Lock the mouse
+		#print("Mouse Captured")
+		##get_tree().paused = false
+	#else:
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Release the mouse
+		#print("Mouse Released")
+		##get_tree().paused = true
